@@ -1,0 +1,17 @@
+const displayNamesRegionsPopulations = (url) => {
+  var data = new XMLHttpRequest(); //XMLhttp request  to the weather api
+  data.open("GET", url);
+  data.send();
+  data.onload = function () {
+    let countries = JSON.parse(data.response);
+    for (let i = 0; i < countries.length; i++)
+      console.log({
+        names: countries[i].name,
+        region: countries[i].region,
+        subregion: countries[i].subregion,
+        population: countries[i].population,
+      });
+  };
+};
+
+displayNamesRegionsPopulations("https://restcountries.com/v3.1/all");
